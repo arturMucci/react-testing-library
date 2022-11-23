@@ -5,12 +5,13 @@ import pokemonList from '../data';
 import renderWithRouter from '../renderWithRouter';
 
 describe('Testa a pagina `Pokemeon Details`', () => {
+  const link = '/pokemon/25';
   test('Testa se as informações são exibidas corretamente', () => {
     const { history, getByRole, getByText } = renderWithRouter(<App />);
     const moreDetails = getByRole('link', { name: /more details/i });
 
     act(() => {
-      history.push('/pokemon/25');
+      history.push(link);
     });
 
     const pokeDetails = getByRole('heading', {
@@ -30,7 +31,7 @@ describe('Testa a pagina `Pokemeon Details`', () => {
     const locations = pokemonList[0].foundAt;
 
     act(() => {
-      history.push('/pokemon/25');
+      history.push(link);
     });
 
     const titleMaps = getByRole('heading', {
@@ -54,7 +55,7 @@ describe('Testa a pagina `Pokemeon Details`', () => {
     const { getByText, getByRole, history } = renderWithRouter(<App />);
 
     act(() => {
-      history.push('/pokemon/25');
+      history.push(link);
     });
 
     const favText = getByText(/pokémon favoritado\?/i);
